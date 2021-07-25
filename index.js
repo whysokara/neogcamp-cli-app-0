@@ -1,11 +1,12 @@
 
 var readlineSync = require("readline-sync");
+var chalk = require('chalk');
 
 var score = 0;
 
 var userName = readlineSync.question("What's your Instagram name?\n");
 
-console.log(`\nHey! ${userName} Do You Know kara?`);
+console.log(chalk.yellowBright("Hey, @") + chalk.red(userName.toLowerCase()) + "\nLet's see How well do you know me!\n");
 
 // Tracking high score
 var highScores = [
@@ -30,12 +31,11 @@ function play(question, answer) {
   var userAnswer = readlineSync.question(question);
 
   if (userAnswer.toUpperCase() === answer.toUpperCase()) { 
-    console.log(`\nAreee ${userName}! bhot sahi`);
+    console.log(chalk.green(`\nAreee ${userName}! bhot sahi`));
     score = score + 2;
 
   } else {
-    console.log(`Oops!! koi na`);
-
+    console.log(chalk.red("Oops!! koi na"));
   }
 
   console.log("Current Score: ", score);
